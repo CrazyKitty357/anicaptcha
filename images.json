@@ -1,0 +1,50 @@
+[
+    {
+        "url": "https://cdn.myanimelist.net/images/characters/12/119411.jpg",
+        "isWoman": true
+    }, 
+    {
+        "url": "images/stunk.png",
+        "isWoman": false
+    },
+    {
+        "url": "images/zel.png",
+        "isWoman": false
+    },
+    {
+        "url": "https://ami.animecharactersdatabase.com/uploads/chars/45134-552841512.jpg",
+        "isWoman": true
+    },
+    {
+        "url": "https://cdn.myanimelist.net/images/characters/9/486592.jpg",
+        "isWoman": true
+    },
+    {
+        "url": "https://cdn.myanimelist.net/images/characters/8/529402.jpg",
+        "isWoman": true
+    },
+    {
+        "url": "https://cdn.myanimelist.net/images/characters/12/321733.jpg",
+        "isWoman": false
+    },
+    {
+        "url": "https://imageproxy.ifunny.co/crop:x-20,resize:640x,quality:90x75/images/00709783cabe2d666b71fd57824be18652fca709c38e7b0953ebd9c1a91d466e_1.jpg",
+        "isWoman": false
+    },
+    {
+        "url": "https://cdn.myanimelist.net/images/characters/2/476656.jpg",
+        "isWoman": true
+    },
+    {
+        "url": "https://cdn.myanimelist.net/images/characters/10/357733.jpg",
+        "isWoman": false
+    },
+    {
+        "url": "images/kaguya_shinomiya.png",
+        "isWoman": true
+    },
+    {
+        "url": "images/shin.png",
+        "isWoman": false
+    }
+]

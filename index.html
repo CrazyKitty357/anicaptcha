@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANICAPTCHA</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { text-align: center; font-family: Arial; }
+    .grid { display: grid; grid-template-columns: repeat(3, 100px); gap: 12px; justify-content: center; }
+    .cell { width: 100px; height: 100px; background-size: cover; cursor: pointer; border: 4px solid rgb(70, 70, 70); }
+    .cell.clicked { border-color: #81ef99; }
+  </style>
+</head>
+<body>
+  <h1>Are you a human?</h1>
+  <h2>Select all cannonical females</h2>
+  <div class="grid" id="grid"></div>
+  <button id="submit">Submit</button>
+
+  <script>
+    const grid = document.getElementById('grid');
+
+    
+    const pickRandom = (arr, n) => {
+      const shuffled = arr.sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, n);
+    };
+
+    
+    fetch('images.json')
+      .then(response => response.json())
+      .then(images => {
+        
+        const selectedImages = pickRandom(images, 9);
+
+        
+        selectedImages.forEach(img => {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.style.backgroundImage = `url(${img.url})`;
+          cell.dataset.isWoman = img.isWoman;
+          cell.addEventListener('click', () => cell.classList.toggle('clicked'));
+          grid.appendChild(cell);
+        });
+      })
+      .catch(err => console.error('Failed to load images:', err));
+
+    // Submission logic
+    document.getElementById('submit').addEventListener('click', () => {
+  const selected = Array.from(document.querySelectorAll('.cell.clicked'));
+  const correct = selected.every(cell => cell.dataset.isWoman === 'true');
+  const allWomenSelected = Array.from(document.querySelectorAll('.cell'))
+    .filter(cell => cell.dataset.isWoman === 'true')
+    .every(cell => cell.classList.contains('clicked'));
+
+  if (correct && allWomenSelected) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirect = urlParams.get('redirect') || '/';
+    window.parent.location.href = redirect;
+  } else {
+    alert('Try again!');
+  }
+});
+  </script>
+</body>
+</html>
